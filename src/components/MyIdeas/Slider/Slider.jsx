@@ -12,18 +12,23 @@ function Slider( {data} ) {
     const [rightArrowDisabled, setRightArrowDisabled] = useState(false)
 
     const config = {
-        elementWidth: '300px',
-        margin: '30px',
-        speed: '1s'
+        elementWidth: '135px',
+        speed: '1s',
+        margin: '20px',
+        containerWidth: '445px',
+        padding: '25px'
     }
 
-    function getIdeaComponent(myIdea) {
+    function getIdeaComponent(idea) {
 
         return (
             <Idea
-                key={myIdea.id}
-                category={myIdea.category}
-                text={myIdea.text}
+                key={idea.id}
+                category={idea.category}
+                text={idea.text}
+                width={idea.width}
+                margin={idea.margin}
+                padding={idea.padding}
             />
         )
 
@@ -31,19 +36,52 @@ function Slider( {data} ) {
 
     function output() {
 
+        // return data.map(idea => {
+
+        //     if (idea.id === activeIdeaIndex) return getIdeaComponent(idea)
+
+        //     else return getIdeaComponent({ id: [idea.id], text: [idea.text] })
+
+        // })
+
         return data.map(idea => {
 
-            if (idea.id === activeIdeaIndex) return getIdeaComponent(idea)
+            if (idea.id == 1) return getIdeaComponent({
+                id: [idea.id],
+                text: [idea.text],
+                margin: `0px ${config.margin} 0px -40px`,
+                width: config.elementWidth,
+                padding: config.padding
+            })
 
-            else return getIdeaComponent({ id: [idea.id], text: [idea.text] })
+            else if (idea.id == activeIdeaIndex) return getIdeaComponent({
+                id: [idea.id],
+                text: [idea.text],
+                category: [idea.category],
+                margin: `0px ${config.margin} 0px 0px`,
+                width: config.elementWidth,
+                padding: config.padding
+            }) 
 
+            else return getIdeaComponent({
+                id: [idea.id],
+                text: [idea.text],
+                margin: `0px ${config.margin} 0px 0px`,
+                width: config.elementWidth,
+                padding: config.padding
+            })
         })
 
     }
 
     function leftArrowClick() {
 
-        setPosition( position + ( parseInt(config.elementWidth) + parseInt(config.margin) ) )
+        setPosition( 
+            position
+            + parseInt(config.elementWidth)
+            + parseInt(config.margin)
+            + 2 * parseInt(config.padding)
+        )
 
         setActiveIdeaIndex( activeIdeaIndex - 1)
 
@@ -51,7 +89,12 @@ function Slider( {data} ) {
 
     function rightArrowClick() {
         
-        setPosition( position - ( parseInt(config.elementWidth) + parseInt(config.margin) ) )
+        setPosition( 
+            position
+            - parseInt(config.elementWidth)
+            - parseInt(config.margin)
+            - 2 * parseInt(config.padding)
+        )
 
         setActiveIdeaIndex( activeIdeaIndex + 1)
 
@@ -85,7 +128,7 @@ function Slider( {data} ) {
                 disabled={leftArrowDisabled}
             />
 
-            <div className={style.Container}>
+            <div className={style.Container} style = {{width: config.containerWidth}}>
 
                 <ul className={style.List} 
                     style = {{

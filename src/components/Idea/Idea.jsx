@@ -1,7 +1,7 @@
 import React from 'react'
 import style from './Idea.module.scss'
 
-function Idea ({ category, text }) {
+function Idea ({ category, text, width, margin, padding}) {
 
     const isActive = category !== undefined
 
@@ -12,7 +12,13 @@ function Idea ({ category, text }) {
     else classes.push(style.Idea__inactive)
 
     return (
-        <div className={classes.join(' ')}>
+        <div className={classes.join(' ')} 
+        style = {{
+                margin: margin, 
+                width: width, 
+                padding: padding
+            }}
+        >
 
             <div className={style.Text}>
                 {text}
