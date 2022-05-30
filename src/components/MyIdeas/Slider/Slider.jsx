@@ -4,9 +4,9 @@ import Arrow from './Arrow/Arrow'
 import Idea from '../../Idea/Idea'
 import style from './Slider.module.scss'
 
-function Slider( {data} ) {
+function Slider ( {data} ) {
 
-    const [activeIdeaIndex, setActiveIdeaIndex] = useState(1)
+    const [activeIdeaIndex, setActiveIdeaIndex] = useState(2)
     const [position, setPosition] = useState(0)
     const [leftArrowDisabled, setLeftArrowDisabled] = useState(true)
     const [rightArrowDisabled, setRightArrowDisabled] = useState(false)
@@ -15,9 +15,11 @@ function Slider( {data} ) {
         elementWidth: '135px',
         speed: '1s',
         margin: '20px',
-        containerWidth: '445px',
         padding: '25px'
     }
+
+    config.containerWidth = 3 * ( 2 * parseInt(config.padding) + parseInt(config.elementWidth) ) 
+    + 2 * parseInt( config.margin )
 
     function getIdeaComponent(idea) {
 
@@ -36,25 +38,9 @@ function Slider( {data} ) {
 
     function output() {
 
-        // return data.map(idea => {
-
-        //     if (idea.id === activeIdeaIndex) return getIdeaComponent(idea)
-
-        //     else return getIdeaComponent({ id: [idea.id], text: [idea.text] })
-
-        // })
-
         return data.map(idea => {
 
-            if (idea.id == 1) return getIdeaComponent({
-                id: [idea.id],
-                text: [idea.text],
-                margin: `0px ${config.margin} 0px -40px`,
-                width: config.elementWidth,
-                padding: config.padding
-            })
-
-            else if (idea.id == activeIdeaIndex) return getIdeaComponent({
+            if (idea.id == activeIdeaIndex) return getIdeaComponent({
                 id: [idea.id],
                 text: [idea.text],
                 category: [idea.category],
@@ -102,18 +88,16 @@ function Slider( {data} ) {
 
     useEffect(() => {
 
-        const visibleElements = 3
-
         if (activeIdeaIndex === 1) 
             setLeftArrowDisabled(true)
 
         if (activeIdeaIndex > 1) 
             setLeftArrowDisabled(false)
 
-        if ( activeIdeaIndex <= (data.length - visibleElements) )  
+        if ( activeIdeaIndex < data.length )  
             setRightArrowDisabled(false)
 
-        if ( activeIdeaIndex > (data.length - visibleElements) ) 
+        if ( activeIdeaIndex === data.length ) 
             setRightArrowDisabled(true)
 
     }, [activeIdeaIndex, data.length])
