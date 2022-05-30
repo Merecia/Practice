@@ -1,10 +1,10 @@
 import React from 'react'
-import style from './FreshIdea.module.scss'
+import style from './Idea.module.scss'
 
-function FreshIdea({category, text}) {
+function Idea ({category, text}) {
 
     return (
-        <div className = {style.FreshIdea}> 
+        <div className = {style.Idea}> 
 
             <div className = {style.Text}>
                 {text}
@@ -19,4 +19,4 @@ function FreshIdea({category, text}) {
     
 }
 
-export default FreshIdea
+export default Idea

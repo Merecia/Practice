@@ -1,8 +1,7 @@
 import React, {useState} from 'react'
 import style from './FreshIdeas.module.scss'
 
-import FreshIdea from './FreshIdea/FreshIdea'
-
+import Idea from '../Idea/Idea'
 
 function FreshIdeas() {
 
@@ -34,10 +33,10 @@ function FreshIdeas() {
 
     const [freshIdeas, setFreshIdeas] = useState(data)
     
-    function getFreshIdeaComponent(freshIdea) {
+    function getIdeaComponent(freshIdea) {
     
         return (
-            <FreshIdea
+            <Idea
                 key = {freshIdea.id}
                 category = {freshIdea.category}
                 text = {freshIdea.text}
@@ -48,7 +47,7 @@ function FreshIdeas() {
     
     function output() {
     
-        return freshIdeas.map( freshIdea => getFreshIdeaComponent(freshIdea) )
+        return freshIdeas.map( freshIdea => getIdeaComponent(freshIdea) )
     }
 
     return (
