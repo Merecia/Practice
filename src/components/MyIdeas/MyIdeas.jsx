@@ -1,7 +1,7 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import style from './MyIdeas.module.scss'
 
-import Idea from '../Idea/Idea'
+import Slider from './Slider/Slider'
 
 function MyIdeas() {
 
@@ -11,7 +11,7 @@ function MyIdeas() {
             category: 'Education',
             text: 'Learn how to fold a paper crane'
         },
-    
+
         {
             id: 2,
             category: 'Busywork',
@@ -31,46 +31,12 @@ function MyIdeas() {
         }
     ]
 
-    const [myIdeas, setMyIdeas] = useState(data)
-    const [activeIdeaIndex, setActiveIdeaIndex] = useState(2)
-    
-    function getIdeaComponent(myIdea) {
-    
-        return (
-            <Idea
-                key = {myIdea.id}
-                category = {myIdea.category}
-                text = {myIdea.text}
-            />
-        )
-    
-    }
-    
-    function output() {
-
-        return myIdeas.map(idea => {
-
-            let object = {}
-
-            if (idea.id === activeIdeaIndex) return getIdeaComponent(idea)
-
-            else {
-                object.id = idea.id
-                object.text = idea.text
-                return getIdeaComponent(object)
-            }
-        })
-        
-    }
-
     return (
-        <div className = {style.MyIdeas}> 
-            
-            <h1 className = {style.Title}> Ideas in my list </h1>
+        <div className={style.MyIdeas}>
 
-            <ul className = {style.List}>
-                { output() }
-            </ul>
+            <h1 className={style.Title}> Ideas in my list </h1>
+
+            <Slider data = {data}/>
 
         </div>
     )

@@ -1,0 +1,19 @@
+.Slider {
+    display: flex;
+    padding: 0 20px;
+}
+
+.Container {
+    border: 1px solid black;
+    width: 1200px;
+    overflow: hidden;
+    margin: 0px auto 0px auto;
+    padding: 20px 20px;
+}
+
+.List {
+    width: 9999px;
+    display: flex;
+    list-style-type: none;
+    background-color: white;
+}
