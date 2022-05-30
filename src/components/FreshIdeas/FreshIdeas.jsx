@@ -63,7 +63,6 @@ function FreshIdeas() {
             </ul>
 
 
-
         </div>
     )
 

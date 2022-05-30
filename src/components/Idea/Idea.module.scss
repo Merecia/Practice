@@ -5,17 +5,27 @@
     box-shadow: 0 5px 5px 0 rgba(0,0,0, .2);
     border-radius: 10px;
     padding: 25px;
+}
+
+.Idea__active {
+
+    height: 80px;
 
     .Text {
         height: 75%;
-        border-bottom: 2px solid rgba(100, 99, 99, 0.616);
     }
 
     .Category {
+        border-top: 2px solid rgba(100, 99, 99, 0.616);
         font-family: cursive;
-        margin-top: 10px;
+        padding-top: 10px;
         height: 25%;
     }
+
+}
+
+.Idea__inactive {
+    height: 50px;
 }
 
 .Idea:hover {
