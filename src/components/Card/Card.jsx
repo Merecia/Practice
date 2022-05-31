@@ -1,7 +1,7 @@
 import React, {useContext} from 'react'
 import style from './Card.module.scss'
 
-import { MyIdeasContext } from '../../context/context'
+import { MyIdeasContext, CompletedIdeasContext } from '../../context/context'
 
 function Card ({ category, text, context, width, margin, padding}) {
 
@@ -15,7 +15,14 @@ function Card ({ category, text, context, width, margin, padding}) {
 
     const {myIdeas, setMyIdeas} = useContext(MyIdeasContext)
 
-    const getLastId = data => parseInt( data[data.length - 1].id )
+    const {completedIdeas, setCompletedIdeas} = useContext(CompletedIdeasContext)
+
+    function getLastId (data) {
+
+        if (data.length === 0) return 0
+
+        return data[data.length - 1].id
+    }
 
     function onClickHandler () {
 
@@ -23,20 +30,28 @@ function Card ({ category, text, context, width, margin, padding}) {
 
             if (context === 'FIRST_SECTION') {
 
-                const data = [...myIdeas]
+                let data = []
+
+                if (myIdeas !== null) data = [...myIdeas]
                 
                 const lastId = getLastId(data)
 
                 data.push({id: lastId + 1, text: text, category: category})
 
                 setMyIdeas(data)
-
             }
 
             else if (context === 'SECOND_SECTION') {
-                console.log('Вы нажали на карточку во второй секции')
-                console.log(category,text,context, width, margin, padding)
-                console.log(myIdeas)
+
+                let data = []
+
+                if (completedIdeas !== null) data = [...completedIdeas]
+
+                const lastId = getLastId(data)
+
+                data.push({id: lastId + 1, text: text, category: category})
+
+                setCompletedIdeas(data)
             }
 
         }
