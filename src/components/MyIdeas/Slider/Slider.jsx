@@ -18,8 +18,15 @@ function Slider ( {data} ) {
         padding: '25px'
     }
 
-    config.containerWidth = 3 * ( 2 * parseInt(config.padding) + parseInt(config.elementWidth) ) 
+    config.containerWidth = 3 * ( 2 * parseInt(config.padding) + parseInt(config.elementWidth) + 2) 
     + 2 * parseInt( config.margin )
+
+    /* 
+    Берём ширину каждого элемента слайдера с учётом внутренних отступов и границ, 
+    каждая из которых имеет ширину 1px. Умножаем это число на 3, поскольку одновременно
+    на экране может быть максимум 3 элемента слайдера. Прибавляем отступы между элементами
+    слайдера. Получаем минимальную ширину контейнера, который может вместить 3 элемента слайдера.
+    */
 
     function getCardComponent(idea) {
 
@@ -69,6 +76,7 @@ function Slider ( {data} ) {
             + parseInt(config.elementWidth)
             + parseInt(config.margin)
             + 2 * parseInt(config.padding)
+            + 2 // учитываем границы, которые имеют ширину 1px
         )
 
         setActiveIdeaIndex( activeIdeaIndex - 1)
@@ -82,6 +90,7 @@ function Slider ( {data} ) {
             - parseInt(config.elementWidth)
             - parseInt(config.margin)
             - 2 * parseInt(config.padding)
+            - 2 // учитываем границы, которые имеют ширину 1px
         )
 
         setActiveIdeaIndex( activeIdeaIndex + 1)
