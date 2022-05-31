@@ -1,21 +1,24 @@
-import React, {useState, useEffect} from 'react'
+import React, { useContext} from 'react'
 import style from './MyIdeas.module.scss'
 
 import Slider from './Slider/Slider'
-import data from '../../data/data'
+
+import {MyIdeasContext} from '../../context/context'
 
 function MyIdeas() {
 
-    const [myIdeas, setMyIdeas] = useState(data)
-    
+    const {myIdeas} = useContext(MyIdeasContext)
+
     return (
-        <div className={style.MyIdeas}>
 
-            <h1 className={style.Title}> Ideas in my list </h1>
+            <div className={style.MyIdeas}>
 
-            <Slider data = {myIdeas}/>
+                <h1 className={style.Title}> Ideas in my list </h1>
 
-        </div>
+                <Slider data={myIdeas} />
+
+            </div>
+            
     )
 
 }

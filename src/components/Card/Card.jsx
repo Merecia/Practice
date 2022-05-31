@@ -1,5 +1,7 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import style from './Card.module.scss'
+
+import { MyIdeasContext } from '../../context/context'
 
 function Card ({ category, text, context, width, margin, padding}) {
 
@@ -11,15 +13,31 @@ function Card ({ category, text, context, width, margin, padding}) {
 
     else classes.push(style.Idea__inactive)
 
-    function onClickHandler() {
+    const {myIdeas, setMyIdeas} = useContext(MyIdeasContext)
+
+    const getLastId = data => parseInt( data[data.length - 1].id )
+
+    function onClickHandler () {
 
         if (isActive) {
 
-            if (context === 'FIRST_SECTION') 
-                console.log('Вы нажали на карточку в первой секции')
+            if (context === 'FIRST_SECTION') {
 
-            else if (context === 'SECOND_SECTION')
+                const data = [...myIdeas]
+                
+                const lastId = getLastId(data)
+
+                data.push({id: lastId + 1, text: text, category: category})
+
+                setMyIdeas(data)
+
+            }
+
+            else if (context === 'SECOND_SECTION') {
                 console.log('Вы нажали на карточку во второй секции')
+                console.log(category,text,context, width, margin, padding)
+                console.log(myIdeas)
+            }
 
         }
 

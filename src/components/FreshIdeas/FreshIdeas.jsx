@@ -1,12 +1,13 @@
-import React, {useState, useEffect} from 'react'
+import React, {useContext} from 'react'
 import style from './FreshIdeas.module.scss'
 
 import Card from '../Card/Card'
-import data from '../../data/data'
+
+import {FreshIdeasContext} from '../../context/context'
 
 function FreshIdeas() {
 
-    const [freshIdeas, setFreshIdeas] = useState(data)
+    const {freshIdeas} = useContext(FreshIdeasContext)
     
     function getCardComponent(freshIdea) {
     
