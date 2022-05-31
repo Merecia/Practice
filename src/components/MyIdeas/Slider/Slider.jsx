@@ -12,7 +12,7 @@ function Slider ( {data} ) {
     const [rightArrowDisabled, setRightArrowDisabled] = useState(false)
 
     const config = {
-        elementWidth: '135px',
+        elementWidth: '175px',
         speed: '1s',
         margin: '20px',
         padding: '25px'
