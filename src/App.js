@@ -1,9 +1,9 @@
 import React from 'react'
 
+import Layout from './Layout/Layout'
 import FreshIdeas from './components/FreshIdeas/FreshIdeas'
 import MyIdeas from './components/MyIdeas/MyIdeas'
-
-import Layout from './Layout/Layout'
+import Achievements from './components/Achievements/Achievements'
 
 function App() {
 
@@ -14,6 +14,8 @@ function App() {
             <FreshIdeas />
 
             <MyIdeas />
+
+            <Achievements/>
 
         </Layout>
 
