@@ -1,7 +1,7 @@
 import React from 'react'
-import style from './Idea.module.scss'
+import style from './Card.module.scss'
 
-function Idea ({ category, text, width, margin, padding}) {
+function Card ({ category, text, context, width, margin, padding}) {
 
     const isActive = category !== undefined
 
@@ -11,13 +11,28 @@ function Idea ({ category, text, width, margin, padding}) {
 
     else classes.push(style.Idea__inactive)
 
+    function onClickHandler() {
+
+        if (isActive) {
+
+            if (context === 'FIRST_SECTION') 
+                console.log('Вы нажали на карточку в первой секции')
+
+            else if (context === 'SECOND_SECTION')
+                console.log('Вы нажали на карточку во второй секции')
+
+        }
+
+    }
+
     return (
         <div className={classes.join(' ')} 
-        style = {{
+            style = {{
                 margin: margin, 
                 width: width, 
                 padding: padding
             }}
+            onClick = {onClickHandler}
         >
 
             <div className={style.Text}>
@@ -39,4 +54,4 @@ function Idea ({ category, text, width, margin, padding}) {
 
 }
 
-export default Idea
+export default Card

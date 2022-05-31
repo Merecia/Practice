@@ -1,45 +1,21 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import style from './FreshIdeas.module.scss'
 
-import Idea from '../Idea/Idea'
+import Card from '../Card/Card'
+import data from '../../data/data'
 
 function FreshIdeas() {
 
-    const data = [
-        {
-            id: 1,
-            category: 'Education',
-            text: 'Learn how to fold a paper crane'
-        },
-    
-        {
-            id: 2,
-            category: 'Busywork',
-            text: 'Make a bucket list'
-        },
-
-        {
-            id: 3,
-            category: 'Relaxation',
-            text: 'Do something you used to do as a kid'
-        },
-
-        {
-            id: 4,
-            category: 'Music',
-            text: 'Listen to your favorite album'
-        }
-    ]
-
     const [freshIdeas, setFreshIdeas] = useState(data)
     
-    function getIdeaComponent(freshIdea) {
+    function getCardComponent(freshIdea) {
     
         return (
-            <Idea
+            <Card
                 key = {freshIdea.id}
                 category = {freshIdea.category}
                 text = {freshIdea.text}
+                context = "FIRST_SECTION"
             />
         )
     
@@ -47,7 +23,7 @@ function FreshIdeas() {
     
     function output() {
     
-        return freshIdeas.map( freshIdea => getIdeaComponent(freshIdea) )
+        return freshIdeas.map( freshIdea => getCardComponent(freshIdea) )
     }
 
     return (

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import Arrow from './Arrow/Arrow'
 
-import Idea from '../../Idea/Idea'
+import Card from '../../Card/Card'
 import style from './Slider.module.scss'
 
 function Slider ( {data} ) {
@@ -21,13 +21,14 @@ function Slider ( {data} ) {
     config.containerWidth = 3 * ( 2 * parseInt(config.padding) + parseInt(config.elementWidth) ) 
     + 2 * parseInt( config.margin )
 
-    function getIdeaComponent(idea) {
+    function getCardComponent(idea) {
 
         return (
-            <Idea
+            <Card
                 key={idea.id}
                 category={idea.category}
                 text={idea.text}
+                context="SECOND_SECTION"
                 width={idea.width}
                 margin={idea.margin}
                 padding={idea.padding}
@@ -40,7 +41,7 @@ function Slider ( {data} ) {
 
         return data.map(idea => {
 
-            if (idea.id == activeIdeaIndex) return getIdeaComponent({
+            if (idea.id === activeIdeaIndex) return getCardComponent({
                 id: [idea.id],
                 text: [idea.text],
                 category: [idea.category],
@@ -49,13 +50,14 @@ function Slider ( {data} ) {
                 padding: config.padding
             }) 
 
-            else return getIdeaComponent({
+            else return getCardComponent({
                 id: [idea.id],
                 text: [idea.text],
                 margin: `0px ${config.margin} 0px 0px`,
                 width: config.elementWidth,
                 padding: config.padding
             })
+
         })
 
     }
