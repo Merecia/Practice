@@ -49,9 +49,9 @@ function Slider ( {data} ) {
         return data.map(idea => {
 
             if (idea.id === activeIdeaIndex) return getCardComponent({
-                id: [idea.id],
-                text: [idea.text],
-                category: [idea.category],
+                id: idea.id,
+                text: idea.text,
+                category: idea.category,
                 margin: `0px ${config.margin} 0px 0px`,
                 width: config.elementWidth,
                 padding: config.padding

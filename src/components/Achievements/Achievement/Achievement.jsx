@@ -1,11 +1,16 @@
 import React from 'react'
 import style from './Achievement.module.scss'
 
-function Achievement() {
+function Achievement({counter, category}) {
 
     return (
-        <div>
-            Здесь будет достижение 
+        <div className = {style.Achievement}>
+            
+            <div className = {style.Circle}>
+                {counter}
+            </div>
+
+            {category}
         </div>
     )
 }

@@ -11,7 +11,7 @@ import style from './Layout.module.scss'
 function Layout(props) {
 
     const [myIdeas, setMyIdeas] = useState(data)
-    const [completedIdeas, setCompletedIdeas] = useState(null)
+    const [completedIdeas, setCompletedIdeas] = useState(data)
     const [freshIdeas, setFreshIdeas] = useState(data)
 
     console.log(completedIdeas)
