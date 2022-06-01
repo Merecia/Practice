@@ -14,6 +14,7 @@ function FreshIdeas() {
         return (
             <Card
                 key = {freshIdea.id}
+                id = {freshIdea.id}
                 category = {freshIdea.category}
                 text = {freshIdea.text}
                 context = "FIRST_SECTION"

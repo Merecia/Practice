@@ -3,7 +3,7 @@ import style from './Card.module.scss'
 
 import { MyIdeasContext, CompletedIdeasContext } from '../../context/context'
 
-function Card ({ category, text, context, width, margin, padding}) {
+function Card ({ id, category, text, context, width, margin, padding}) {
 
     const isActive = category !== undefined
 
@@ -26,32 +26,56 @@ function Card ({ category, text, context, width, margin, padding}) {
 
     function onClickHandler () {
 
+        console.log(completedIdeas)
+
         if (isActive) {
 
             if (context === 'FIRST_SECTION') {
 
-                let data = []
+                let myIdeasData = []
 
-                if (myIdeas !== null) data = [...myIdeas]
+                if (myIdeas !== null) myIdeasData = [...myIdeas]
                 
-                const lastId = getLastId(data)
+                const lastId = getLastId(myIdeasData)
 
-                data.push({id: lastId + 1, text: text, category: category})
+                myIdeasData.push({id: lastId + 1, text: text, category: category})
 
-                setMyIdeas(data)
+                setMyIdeas(myIdeasData)
             }
 
             else if (context === 'SECOND_SECTION') {
 
-                let data = []
+                let completedIdeasData = []
+                let myIdeasData = []
 
-                if (completedIdeas !== null) data = [...completedIdeas]
+                if (completedIdeas !== null) 
+                    completedIdeasData = [...completedIdeas]
 
-                const lastId = getLastId(data)
+                if (myIdeas !== null)
+                    myIdeasData = [...myIdeas]
 
-                data.push({id: lastId + 1, text: text, category: category})
+                const lastId = getLastId(completedIdeasData)
 
-                setCompletedIdeas(data)
+                completedIdeasData.push({id: lastId + 1, text: text, category: category})
+
+                setCompletedIdeas(completedIdeasData)
+
+                let updated = []
+                myIdeasData.map(myIdea => {
+                    
+                    if (myIdea.id === id) myIdea = null
+
+                    return myIdea
+                })
+                .filter(myIdea => myIdea !== null)
+                .forEach( (myIdea, index) => updated.push({
+                        id: index + 1, 
+                        text: myIdea.text, 
+                        category: myIdea.category
+                    }
+                ))
+
+                setMyIdeas(updated)
             }
 
         }

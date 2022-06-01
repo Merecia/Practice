@@ -15,7 +15,7 @@ function Achievements() {
 
         let categories = new Set( completedIdeas.map(completedIdeas => completedIdeas.category) )
 
-        categories.forEach(category => {
+        categories.forEach( (category, index) => {
             let counter = 0
 
             completedIdeas.forEach(completedIdea => {
@@ -25,7 +25,7 @@ function Achievements() {
 
             })
 
-            achievements.push({category: category, counter: counter})
+            achievements.push({id: index + 1, category: category, counter: counter})
         })
 
         return achievements
@@ -35,6 +35,7 @@ function Achievements() {
 
         return (
             <Achievement
+                key = {achievement.id}
                 counter = {achievement.counter}
                 category = {achievement.category}
             />

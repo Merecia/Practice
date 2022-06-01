@@ -33,6 +33,7 @@ function Slider ( {data} ) {
         return (
             <Card
                 key={idea.id}
+                id = {idea.id}
                 category={idea.category}
                 text={idea.text}
                 context="SECOND_SECTION"
@@ -58,8 +59,8 @@ function Slider ( {data} ) {
             }) 
 
             else return getCardComponent({
-                id: [idea.id],
-                text: [idea.text],
+                id: idea.id,
+                text: idea.text,
                 margin: `0px ${config.margin} 0px 0px`,
                 width: config.elementWidth,
                 padding: config.padding
