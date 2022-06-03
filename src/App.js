@@ -1,4 +1,5 @@
 import React from 'react'
+import style from './App.module.scss'
 
 import Layout from './Layout/Layout'
 import FreshIdeas from './components/FreshIdeas/FreshIdeas'
@@ -10,17 +11,21 @@ function App() {
 
     return (
 
-        <Layout>
+        <div className={style.App}>
 
-            <FreshIdeas />
+            <Layout>
 
-            <MyIdeas />
+                <FreshIdeas />
 
-            <Achievements/>
+                <MyIdeas />
 
-            <Table />
+                <Achievements />
 
-        </Layout>
+                <Table />
+
+            </Layout>
+            
+        </div>
 
     )
 

@@ -1,15 +1,23 @@
 .Table {
-    padding-top: 50px;
-    padding-bottom: 50px;
-}
+    padding-bottom: 40px;
 
-table {
-    margin: 0 auto;
-    width: 1000px;
-    border-collapse: collapse;
-
-    td, th {
-        border: 1px solid black;
+    .Title {
+        margin-bottom: 40px;
+        font-weight: 600;
+        font-size: 22px;
+        text-align: center;
     }
 
+    table {
+        margin: 0 auto;
+        width: 900px;
+        border-collapse: collapse;
+    
+        td, th {
+            text-align: center;
+            padding: 10px;
+            border: 1px solid black;
+        }
+    
+    }
 }

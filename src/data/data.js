@@ -23,11 +23,11 @@ const data = [
         text: 'Listen to your favorite album'
     },
 
-    {
-        id: 5,
-        category: 'Education',
-        text: 'Learn how to read a books'
-    },
+    // {
+    //     id: 5,
+    //     category: 'Education',
+    //     text: 'Learn how to read a books'
+    // },
 ]
 
 export default data
