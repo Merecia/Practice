@@ -14,9 +14,14 @@
         border-collapse: collapse;
     
         td, th {
+            background: #eee;
             text-align: center;
             padding: 10px;
             border: 1px solid black;
+        }
+
+        th {
+            background-color: rgb(245, 226, 150);
         }
     
     }

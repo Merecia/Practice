@@ -8,7 +8,7 @@
 }
 
 .Idea__active {
-
+    background-color: rgb(245, 226, 150);
     height: 80px;
 
     .Text {
@@ -25,6 +25,7 @@
 }
 
 .Idea__inactive {
+    background: #eee;
     transform: translateY(10px);
     height: 50px;
 }

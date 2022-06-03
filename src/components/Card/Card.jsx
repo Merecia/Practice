@@ -26,7 +26,7 @@ function Card ({ id, category, text, context, width, margin, padding}) {
 
     function onClickHandler () {
 
-        console.log(completedIdeas)
+        // console.log(completedIdeas)
 
         if (isActive) {
 
@@ -56,7 +56,12 @@ function Card ({ id, category, text, context, width, margin, padding}) {
 
                 const lastId = getLastId(completedIdeasData)
 
-                completedIdeasData.push({id: lastId + 1, text: text, category: category})
+                completedIdeasData.push({
+                    id: lastId + 1, 
+                    text: text, 
+                    category: category, 
+                    time: new Date().getTime()
+                })
 
                 setCompletedIdeas(completedIdeasData)
 
