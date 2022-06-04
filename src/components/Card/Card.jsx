@@ -5,17 +5,23 @@ import { MyIdeasContext, CompletedIdeasContext } from '../../context/context'
 
 function Card ({ id, category, text, context, width, margin, padding}) {
 
-    const isActive = category !== undefined
-
-    const classes = [style.Idea]
-
-    if (isActive) classes.push(style.Idea__active)
-
-    else classes.push(style.Idea__inactive)
-
     const {myIdeas, setMyIdeas} = useContext(MyIdeasContext)
 
     const {completedIdeas, setCompletedIdeas} = useContext(CompletedIdeasContext)
+
+    const isActive = category !== undefined
+
+    function getClasses() {
+        
+        const classes = [style.Idea]
+    
+        if (isActive) classes.push(style.Idea__active)
+    
+        else classes.push(style.Idea__inactive)
+
+        return classes.join(' ')
+
+    }
 
     function getLastId (data) {
 
@@ -78,7 +84,7 @@ function Card ({ id, category, text, context, width, margin, padding}) {
     }
 
     return (
-        <div className={classes.join(' ')} 
+        <div className={getClasses()} 
             style = {{
                 margin: margin, 
                 width: width, 
