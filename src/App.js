@@ -6,6 +6,7 @@ import FreshIdeas from './components/FreshIdeas/FreshIdeas'
 import MyIdeas from './components/MyIdeas/MyIdeas'
 import Achievements from './components/Achievements/Achievements'
 import Table from './components/Table/Table'
+import Buttons from './components/Buttons/Buttons'
 
 function App() {
 
@@ -22,6 +23,8 @@ function App() {
                 <Achievements />
 
                 <Table />
+
+                <Buttons/>
 
             </Layout>
             
