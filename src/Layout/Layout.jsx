@@ -10,11 +10,9 @@ import style from './Layout.module.scss'
 
 function Layout(props) {
 
-    const [myIdeas, setMyIdeas] = useState(data)
-    const [completedIdeas, setCompletedIdeas] = useState(data)
+    const [myIdeas, setMyIdeas] = useState([])
+    const [completedIdeas, setCompletedIdeas] = useState([])
     const [freshIdeas, setFreshIdeas] = useState(data)
-
-    console.log(completedIdeas)
 
     return (
 

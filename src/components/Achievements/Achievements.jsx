@@ -52,17 +52,24 @@ function Achievements() {
 
 
     return (
-        <div className={style.Achievements}>
+        <>
 
-            <h1 className = {style.Title}> Achievements </h1>
+            {
 
-            <div className={style.Container}>
-                {output()}
-            </div>
+                completedIdeas.length !== 0
+                ?
+                    <div className={style.Achievements}>
+                        <h1 className={style.Title}> Achievements </h1>
 
+                        <div className={style.Container}>
+                            {output()}
+                        </div>
+                    </div>
 
-
-        </div>
+                : null
+            }
+            
+        </>
     )
 
 }

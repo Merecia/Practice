@@ -26,15 +26,11 @@ function Card ({ id, category, text, context, width, margin, padding}) {
 
     function onClickHandler () {
 
-        // console.log(completedIdeas)
-
         if (isActive) {
 
             if (context === 'FIRST_SECTION') {
 
-                let myIdeasData = []
-
-                if (myIdeas !== null) myIdeasData = [...myIdeas]
+                let myIdeasData = [...myIdeas]
                 
                 const lastId = getLastId(myIdeasData)
 
@@ -45,14 +41,8 @@ function Card ({ id, category, text, context, width, margin, padding}) {
 
             else if (context === 'SECOND_SECTION') {
 
-                let completedIdeasData = []
-                let myIdeasData = []
-
-                if (completedIdeas !== null) 
-                    completedIdeasData = [...completedIdeas]
-
-                if (myIdeas !== null)
-                    myIdeasData = [...myIdeas]
+                let completedIdeasData = [...completedIdeas]
+                let myIdeasData = [...myIdeas]
 
                 const lastId = getLastId(completedIdeasData)
 
@@ -71,8 +61,8 @@ function Card ({ id, category, text, context, width, margin, padding}) {
                     if (myIdea.id === id) myIdea = null
 
                     return myIdea
-                })
-                .filter(myIdea => myIdea !== null)
+                    
+                }).filter(myIdea => myIdea !== null)
                 .forEach( (myIdea, index) => updated.push({
                         id: index + 1, 
                         text: myIdea.text, 

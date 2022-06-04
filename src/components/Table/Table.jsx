@@ -51,32 +51,40 @@ function Table() {
     let output = () => completedIdeas.map(completedIdea => getRowComponent(completedIdea))
 
     return (
-        <div className={style.Table}>
+        <>
 
-            <h1 className={style.Title}> Completed challenges </h1>
+            {
+                completedIdeas.length !== 0
+                ?
+                    <div className={style.Table}>
+                        <h1 className={style.Title}> Completed challenges </h1>
 
-            <table>
+                        <table>
 
-                <thead>
+                            <thead>
 
-                    <tr>
-                        <th> </th>
-                        <th> Title </th>
-                        <th> Type </th>
-                        <th> When </th>
-                    </tr>
+                                <tr>
+                                    <th> </th>
+                                    <th> Title </th>
+                                    <th> Type </th>
+                                    <th> When </th>
+                                </tr>
 
-                </thead>
+                            </thead>
 
-                <tbody>
+                            <tbody>
 
-                    {output()}
+                                {output()}
+
+                            </tbody>
+
+                        </table>
+                    </div>
                     
-                </tbody>
+                : null
+            }
 
-            </table>
-
-        </div>
+        </>
 
     )
 
