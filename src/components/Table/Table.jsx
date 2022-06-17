@@ -23,8 +23,6 @@ function Table() {
     }
 
     function whenTaskCompleted(time) {
-        let when
-
         let A = time
         let B = new Date().getTime()
 
@@ -38,8 +36,11 @@ function Table() {
         const month = week * 4
         const year = month * 12
 
+        let when
+
         if (difference < minute) when = 'Just now'
         else if (difference >= minute && difference < hour) when = 'A minute ago'
+        else if (difference >= hour && difference < day) when = 'An  one hour ago'
         else if (difference >= day && difference < week) when = 'Yesterday'
         else if (difference >= week && difference < month) when = 'A week ago'
         else if (difference >= month && difference < year) when = 'A month ago'
@@ -85,7 +86,6 @@ function Table() {
             }
 
         </>
-
     )
 
 }
